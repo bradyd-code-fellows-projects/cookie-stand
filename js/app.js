@@ -8,22 +8,6 @@ const storeLocations = [
   {name: 'Lima', minCust: 2, maxCust: 16, avgCookie: 4.6}
 ];
 
-function getStoreName(arr) {
-  let storeName = '';
-  for (let i = 0; i < arr.length; i++) {
-    let storeName = arr[i].name;
-    return storeName;
-  }
-}
-
-function getMinimumCustomers(arr) {
-  let minCust = 0;
-  for (let i = 0; i < arr.length; i++) {
-    let minCust = arr[i].minCust;
-    return minCust;
-  }
-}
-
 const parentElement = document.getElementById('storeFronts');
 
 const article = document.createElement('article');
