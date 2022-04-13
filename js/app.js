@@ -1,5 +1,7 @@
 'use strict';
 
+const storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '12pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+
 function StoreSalesInfo (name, minCust, maxCust, avgCookiesPerCustomer) {
   this.name = name;
   this.minCust = minCust;
@@ -12,46 +14,58 @@ function StoreSalesInfo (name, minCust, maxCust, avgCookiesPerCustomer) {
 StoreSalesInfo.prototype.generateRandomCookiesPerHour = function () {
   let total = 0;
   for (let i = 0; i < storeHours.length; i++) {
-    const randomCustomersPerHour = getRandInRange(this.minCust, this.maxCust);
-    const cookiesSold = Math.ceil(this.avgCookiesPerCustomer * randomCustomersPerHour);
+    let randomCustomersPerHour = getRandInRange(this.minCust, this.maxCust);
+    let cookiesSold = Math.ceil(this.avgCookiesPerCustomer * randomCustomersPerHour);
     this.randomCookiesPerHour[i] = cookiesSold;
     total += cookiesSold;
   }
   this.totalCookiesSold = total;
 };
 
+const containerElem = document.getElementById('storeFronts');
+
+const salesTable = document.createElement('table');
+containerElem.appendChild(salesTable);
+
+const salesTableTHead = document.createElement('thead');
+salesTable.appendChild(salesTableTHead);
+
+const salesTableTR = document.createElement('tr');
+salesTableTHead.appendChild(salesTableTR);
+
+const emptySalesTableHeading = document.createElement('th');
+salesTableTR.appendChild(emptySalesTableHeading);
+emptySalesTableHeading.textContent = '';
+
+for (let i = 0; i < storeHours.length; i++) {
+  const newHeaderCell = document.createElement('th');
+  salesTableTR.appendChild(newHeaderCell);
+  newHeaderCell.textContent = storeHours[i];
+}
+
 StoreSalesInfo.prototype.render = function () {
 
-  const containerElem = document.getElementById('storeFronts');
+  const salesTableTBody = document.createElement('tbody');
+  salesTable.appendChild(salesTableTBody);
 
-  const articleElem = document.createElement('article');
-  containerElem.appendChild(articleElem);
+  const salesTableTBodyTh = document.createElement('th');
+  salesTableTBody.appendChild(salesTableTBodyTh);
+  salesTableTBodyTh.textContent = this.name;
 
-  const headingElem = document.createElement('h2');
-  articleElem.appendChild(headingElem);
-  headingElem.textContent = this.name;
-
-  const ulElem = document.createElement('ul');
-  articleElem.appendChild(ulElem);
-  for (let i = 0; i < storeHours.length; i++) {
-    const liElem = document.createElement('li');
-    ulElem.appendChild(liElem);
-    const timeSlot = storeHours[i];
-    const cookiesSoldThisHour = this.randomCookiesPerHour[i];
-    liElem.textContent = `${timeSlot}: ${cookiesSoldThisHour}`;
+  for (let j = 0; j < this.randomCookiesPerHour.length; j++) {
+    const cookiesSoldData = document.createElement('td');
+    salesTableTBodyTh.appendChild(cookiesSoldData);
+    cookiesSoldData.textContent = this.randomCookiesPerHour[j];
+    break;
   }
-  const liElem = document.createElement('li');
-  ulElem.appendChild(liElem);
-  liElem.textContent = `Total: ${this.totalCookiesSold}`;
 };
+
 
 function getRandInRange(min, max) {
   const span = max - min + 1;
   const RandInSpan = Math.floor(Math.random() * span);
   return min + RandInSpan;
 }
-
-const storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '12pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
 const seattle = new StoreSalesInfo('Seattle', 23, 65, 6.3);
 seattle.generateRandomCookiesPerHour();
