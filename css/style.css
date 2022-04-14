@@ -59,17 +59,10 @@ main h1 {
 }
 
 table {
-  background-color: azure;
-  width: 100vw;
-}
-
-th {
-  color: red;
+  color:white;
+  background-color: black;
 }
 
 td {
-  color: green;
-  border-style: solid black;
-  border-width: 2px;
-  padding: 10px;
+  border: solid white 2px;
 }
