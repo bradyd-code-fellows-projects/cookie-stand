@@ -1,3 +1,75 @@
+html {
+  width: 100vw;
+}
+
 body {
-  background-color: aqua;
+  background-color: #767554;
+}
+
+header {
+  width: 100vw;
+}
+
+h1 {
+  font-size: 40px;
+  text-align: center;
+  background-color: #648c84;
+  color: rgba(220, 77, 20, 0.904);
+  }
+
+header img {
+  display: flex;
+  flex-direction: row;
+  margin: 10px auto 10px auto;
+  justify-content:space-evenly;
+  background-color: rgba(220, 77, 20, 0.904);
+  border: 2px;
+  border-style: groove;
+  border-color: black;
+}
+
+nav img {
+  height:initial;
+  width: initial;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-evenly;
+}
+
+ul li {
+  
+  height: 70px;
+  width: 200px;
+  background-color: gray;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  text-align: center;
+}
+
+main h1 {
+  font-size: 40px;
+  text-align: center;
+  background-color: #648c84;
+}
+
+table {
+  background-color: azure;
+  width: 100vw;
+}
+
+th {
+  color: red;
+}
+
+td {
+  color: green;
+  border-style: solid black;
+  border-width: 2px;
+  padding: 10px;
 }
