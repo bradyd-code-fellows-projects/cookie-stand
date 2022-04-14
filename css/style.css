@@ -42,6 +42,7 @@ ul {
 }
 
 ul li {
+  
   height: 70px;
   width: 200px;
   background-color: gray;
@@ -55,4 +56,20 @@ main h1 {
   font-size: 40px;
   text-align: center;
   background-color: #648c84;
+}
+
+table {
+  background-color: azure;
+  width: 100vw;
+}
+
+th {
+  color: red;
+}
+
+td {
+  color: green;
+  border-style: solid black;
+  border-width: 2px;
+  padding: 10px;
 }
