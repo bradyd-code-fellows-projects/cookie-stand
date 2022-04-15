@@ -45,18 +45,6 @@ function getHourlyTotalsAcrossShops() {
   return hourlyTotalAcrossShops;
 }
 
-// daily location total, far right end of table
-
-function getDailyLocationTotals() {
-  let dailyLocationTotals = 0;
-  for (let i = 0; i < storeHours.length; i++) {
-    const currentHour = storeHours[i];
-    let locationHourCookiesSold = currentHour.simulatedSales;
-    dailyLocationTotals += locationHourCookiesSold;
-  }
-  return dailyLocationTotals;
-}
-
 // ******declare functions for creating table elements
 
 
@@ -156,3 +144,13 @@ createHeaderRow();
 // create footer row
 createFooterRow();
 
+
+const newCookieStandFormElem = document.getElementById('add-a-location');
+newCookieStandFormElem.addEventListener('submit', function(event) {
+  event.preventDefault();
+  const location = event.target.location.value;
+  const minCustomers = parseInt(event.target.minCustomers.value);
+  const maxCustomers = parseInt(event.target.maxCustomers.value);
+  const avgCookies = parseFloat(event.target.avgCookies.value);
+  console.log(location, minCustomers, maxCustomers, avgCookies);
+});
