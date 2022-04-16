@@ -1,35 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Add a New Cookie Stand Location</title>
   <link rel="stylesheet" href="/css/reset.css" />
-  <link rel="stylesheet" href ="/css/style.css" />
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
 
 <body>
+
   <header>
     <h1>Salmon Cookie</h1>
     <img src="/img/salmon.png" />
   </header>
-  <form id="add-a-location"></form>
-  <fieldset>
-    <legend>Add a Salmon Cookie Location</legend>
-    <label for="location">Location City Name</label>
-    <input type="text" name="locationCity" id="location-city" required></label>
-    <label for="minimumCustomers">Minimum Customers Per Hour</label>
-    <input type="text" name="minimumCustomers" id="minimum-customers" required></label>
-    <label for="maximumCustomers">Maximum Customers Per Hour</label>
-    <input type="text" name="maximumCustomers" required></label>
-    <label for="avgCookiesPerCustomer">Average Cookies Per Customer</label>
-    <input type="text" name="avgCookiesPerCustomer" step="0.1" required></label>
-    <button id="submitBtn">Submit</button>
-    </form>
-  </fieldset>
 
-  <div class="storeLocations">
+  <main>
 
-  </div>
+    <div class="storeLocations"></div>
+
+    <form id="add-a-location"></form>
+    <fieldset>
+      <legend>Add a Salmon Cookie Location</legend>
+      <label for="location">Location City Name</label>
+      <input type="text" name="locationCity" id="location-city" required></label>
+      <label for="minimumCustomers">Minimum Customers Per Hour</label>
+      <input type="text" name="minimumCustomers" id="minimum-customers" required></label>
+      <label for="maximumCustomers">Maximum Customers Per Hour</label>
+      <input type="text" name="maximumCustomers" required></label>
+      <label for="avgCookiesPerCustomer">Average Cookies Per Customer</label>
+      <input type="text" name="avgCookiesPerCustomer" step="0.1" required></label>
+      <button id="btn">Submit</button>
+      </form>
+    </fieldset>
+
+  </main>
+
+<footer>
+
+</footer>
   <script src="/js/app.js"></script>
 </body>
 </html>

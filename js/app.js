@@ -12,7 +12,7 @@ function CookieStand(locationCity, minCustomersPerHour, maxCustomersPerHour, avg
 }
 
 
-CookieStand.prototype.generateRandomHourlyCookieSales = function() {
+CookieStand.prototype.generateRandomHourlyCookieSales = function () {
   let total = 0;
   for (let i = 0; i < storeHours.length; i++) {
     const simulatedCustomersPerHour = randomInRange(this.minCustomersPerHour, this.maxCustomersPerHour);
@@ -25,7 +25,7 @@ CookieStand.prototype.generateRandomHourlyCookieSales = function() {
 
 // return random number in a range
 
-function randomInRange (min, max) {
+function randomInRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
@@ -100,7 +100,7 @@ function createHeaderRow() {
 
 // render
 
-CookieStand.prototype.render = function() {
+CookieStand.prototype.render = function () {
 
   const rowElem = document.createElement('tr');
   tableElem.appendChild(rowElem);
@@ -143,14 +143,3 @@ createHeaderRow();
 
 // create footer row
 createFooterRow();
-
-
-const newCookieStandFormElem = document.getElementById('add-a-location');
-newCookieStandFormElem.addEventListener('submit', function(event) {
-  event.preventDefault();
-  const location = event.target.location.value;
-  const minCustomers = parseInt(event.target.minCustomers.value);
-  const maxCustomers = parseInt(event.target.maxCustomers.value);
-  const avgCookies = parseFloat(event.target.avgCookies.value);
-  console.log(location, minCustomers, maxCustomers, avgCookies);
-});
