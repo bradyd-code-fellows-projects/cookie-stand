@@ -115,6 +115,9 @@ fieldset {
 
 fieldset label {
   border: groove 2px black;
+  width: max-content;
+  height: max-content;
+  margin: auto;
 }
 
 fieldset input {
@@ -124,7 +127,7 @@ fieldset input {
 
 .form-column {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 400px;
   gap: 25px;
   justify-content: left;

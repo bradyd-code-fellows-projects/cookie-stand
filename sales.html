@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Salmon Cookie Sales Data</title>
+  <title>Add a New Cookie Stand Location</title>
   <link rel="stylesheet" href="css/reset.css" />
-  <link rel="stylesheet" href ="css/style.css" />
+  <link rel="stylesheet" href="css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Akshar:wght@300&display=swap" rel="stylesheet">
@@ -12,29 +13,44 @@
 </head>
 
 <body>
-  <header>
-    <h1 class="highlights">Salmon Cookie</h1>
+
+  <header class="highlights">
+    <h1>Salmon Cookie</h1>
     <img src="img/salmon.png" />
 
-    <nav class="highlights">
+    <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="addNewCookieStand.html">Add a new location</a></li>
       </ul>
     <nav>
 
   </header>
 
   <main>
-    <h1 class="highlights">Salmon Cookie Sales Information</h1>
-    <section class="data" id="storeLocations"> </section>
-  </main>
-  
-  <footer>
     
-  </footer>
+    <form id="add-a-location"></form>
+    <fieldset class="form-column">
+      <legend>Add a Salmon Cookie Location</legend>
+      <label for="location">Location City Name</label>
+      <input type="text" name="locationCity" id="location-city" required></label>
+      <label for="minimumCustomers">Minimum Customers Per Hour</label>
+      <input type="text" name="minimumCustomers" id="minimum-customers" required></label>
+      <label for="maximumCustomers">Maximum Customers Per Hour</label>
+      <input type="text" name="maximumCustomers" required></label>
+      <label for="avgCookiesPerCustomer">Average Cookies Per Customer</label>
+      <input type="text" name="avgCookiesPerCustomer" step="0.1" required></label>
+      <button id="btn">Submit</button>
+    </form>
+  </fieldset>
+  
+  <h1 class="highlights">Salmon Cookie Sales Information</h1>
+  <section class="data" id="storeLocations"> </section>
 
+  </main>
+
+<footer>
+
+</footer>
   <script src="js/app.js"></script>
-
 </body>
 </html>
