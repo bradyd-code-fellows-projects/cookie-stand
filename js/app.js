@@ -1,51 +1,14 @@
 'use strict';
 
+// ********************* GLOBAL VARIABLES *********************
+
 const storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '12pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
-function CookieStand(locationCity, minCustomersPerHour, maxCustomersPerHour, avgCookiesPerCustomer) {
-  this.locationCity = locationCity;
-  this.minCustomersPerHour = minCustomersPerHour;
-  this.maxCustomersPerHour = maxCustomersPerHour;
-  this.avgCookiesPerCustomer = avgCookiesPerCustomer;
-  this.totalCookiesPerHourPerLocation = [];
-  this.cookieSales = this.generateRandomHourlyCookieSales();
-}
 
 
-CookieStand.prototype.generateRandomHourlyCookieSales = function () {
-  let total = 0;
-  for (let i = 0; i < storeHours.length; i++) {
-    const simulatedCustomersPerHour = randomInRange(this.minCustomersPerHour, this.maxCustomersPerHour);
-    const simulatedSales = Math.ceil(simulatedCustomersPerHour * this.avgCookiesPerCustomer);
-    this.totalCookiesPerHourPerLocation.push(simulatedSales);
-    total += simulatedSales;
-  }
-  this.totalCookiesSoldPerLocation = total;
-};
+// ********************* DOM REFERENCES ***********************
 
-// return random number in a range
-
-function randomInRange(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-// total for each hour on bottom of table
-
-function getHourlyTotalsAcrossShops() {
-  let hourlyTotalAcrossShops = [];
-  for (let j = 0; j < storeHours.length; j++) {
-    let total = 0;
-    for (let i = 0; i < newCookieStands.length; i++) {
-      let currentStore = newCookieStands[i];
-      let hourCookiesSold = currentStore.totalCookiesPerHourPerLocation[j];
-      total += hourCookiesSold;
-    }
-    hourlyTotalAcrossShops.push(total);
-  }
-  return hourlyTotalAcrossShops;
-}
-
-// ******declare functions for creating table elements
+// declare functions for creating table elements
 
 
 const containerElem = document.getElementById('storeLocations');
@@ -98,7 +61,75 @@ function createHeaderRow() {
   locationDailyGrandTotal.textContent = 'Daily Location Total';
 }
 
-// render
+// create header row
+createHeaderRow();
+
+// create footer row
+createFooterRow();
+
+// ********************** CONSTRUCTOR *************************
+
+function CookieStand(locationCity, minCustomersPerHour, maxCustomersPerHour, avgCookiesPerCustomer) {
+  this.locationCity = locationCity;
+  this.minCustomersPerHour = minCustomersPerHour;
+  this.maxCustomersPerHour = maxCustomersPerHour;
+  this.avgCookiesPerCustomer = avgCookiesPerCustomer;
+  this.totalCookiesPerHourPerLocation = [];
+  this.cookieSales = this.generateRandomHourlyCookieSales();
+}
+
+CookieStand.prototype.generateRandomHourlyCookieSales = function () {
+  let total = 0;
+  for (let i = 0; i < storeHours.length; i++) {
+    const simulatedCustomersPerHour = randomInRange(this.minCustomersPerHour, this.maxCustomersPerHour);
+    const simulatedSales = Math.ceil(simulatedCustomersPerHour * this.avgCookiesPerCustomer);
+    this.totalCookiesPerHourPerLocation.push(simulatedSales);
+    total += simulatedSales;
+  }
+  this.totalCookiesSoldPerLocation = total;
+};
+
+const newCookieStands = [
+  new CookieStand('Seattle', 23, 65, 6.3),
+  new CookieStand('Tokyo', 3, 24, 1.2),
+  new CookieStand('Dubai', 11, 38, 3.7),
+  new CookieStand('Paris', 20, 38, 2.3),
+  new CookieStand('Lima', 2, 16, 4.6)
+];
+
+for (let i = 0; i < newCookieStands.length; i++) {
+  newCookieStands[i].render();
+}
+
+// *********** EXECUTBALE CODE - HELPER FUNCTIONS *************
+
+// a random number in a range
+
+function randomInRange(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+// total for each hour on bottom of table
+
+function getHourlyTotalsAcrossShops() {
+  let hourlyTotalAcrossShops = [];
+  for (let j = 0; j < storeHours.length; j++) {
+    let total = 0;
+    for (let i = 0; i < newCookieStands.length; i++) {
+      let currentStore = newCookieStands[i];
+      let hourCookiesSold = currentStore.totalCookiesPerHourPerLocation[j];
+      total += hourCookiesSold;
+    }
+    hourlyTotalAcrossShops.push(total);
+  }
+  return hourlyTotalAcrossShops;
+}
+
+
+// ******************* EVENT HANDLERS *************************
+
+
+// ********************** RENDER TABLE ************************
 
 CookieStand.prototype.render = function () {
 
@@ -123,23 +154,4 @@ CookieStand.prototype.render = function () {
 
 };
 
-// ********** invoke functions that create elements
-
-
-const newCookieStands = [
-  new CookieStand('Seattle', 23, 65, 6.3),
-  new CookieStand('Tokyo', 3, 24, 1.2),
-  new CookieStand('Dubai', 11, 38, 3.7),
-  new CookieStand('Paris', 20, 38, 2.3),
-  new CookieStand('Lima', 2, 16, 4.6)
-];
-
-for (let i = 0; i < newCookieStands.length; i++) {
-  newCookieStands[i].render();
-}
-
-// create header row
-createHeaderRow();
-
-// create footer row
-createFooterRow();
+// ****************** EVENT LISTENERS *************************
