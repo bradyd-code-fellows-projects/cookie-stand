@@ -1,13 +1,9 @@
 html {
-  width: 100vw;
+  width: 100%;
 }
 
 body {
   background-color: #767554;
-}
-
-header {
-  width: 100vw;
 }
 
 h1 {
@@ -111,24 +107,17 @@ main ul {
 fieldset {
   border: groove 2px black;
   margin: 10px;
+  /* width: auto; */
 }
 
 fieldset label {
   border: groove 2px black;
-  width: max-content;
+  /* width: max-content;
   height: max-content;
-  margin: auto;
+  margin: auto; */
 }
 
 fieldset input {
   border: groove 2px black;
   margin: 10px;
-}
-
-.form-column {
-  display: flex;
-  flex-direction: row;
-  width: 400px;
-  gap: 25px;
-  justify-content: left;
 }
